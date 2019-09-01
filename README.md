@@ -143,3 +143,15 @@ still be compilable with cmake and make./
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+## Model Implementation
+
+Basically, the path planning could be divided into two steps: behaviour planning and trajectory generation.
+
+1. Behaviour planning:
+According to the localization and sensor fusion data, the algorithm try to decide what shall ego vehicle behavor, for example: keep the car in current lane, change to the left lane or change to the right lane.
+
+2. Trajectory generation:
+considering the result of behaviour planning, the second step is to generate the trajectory. It help to create a list of waypoints that ego car visits sequentially every 0.02s.
+firstly, I used two points of previous trajectoy and 3 additional points at a far distance. These five points are originally based in the global coordinates and then we transform to the local car coordinates. Later, the generated spline curve could be used to produce the trajectory with denser waypoints for ego care to follow.
+
+
